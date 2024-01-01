@@ -1,11 +1,21 @@
-cmake_minimum_required(VERSION 3.9)
-project(readerwriterqueue VERSION 1.0.0)
+cmake_minimum_required(VERSION 3.16)
+project(_)
 
-include(GNUInstallDirs)
+# -------------------------------------------------------------
+# Import aoe cmake kit
+include(FetchContent)
+FetchContent_Declare(aoe_cmake_kit GIT_REPOSITORY https://github.com/Yarten/aoe_cmake_kit.git GIT_TAG main)
+FetchContent_MakeAvailable(aoe_cmake_kit)
 
-add_library(${PROJECT_NAME} INTERFACE)
+# -------------------------------------------------------------
+# Define the project
+aoe_project(
+    NAME    readerwriterqueue
+    VERSION 1.0.0
+)
 
-target_include_directories(readerwriterqueue INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
+# Create the interface library
+aoe_add_library(${PROJECT_NAME})
 
-install(FILES atomicops.h readerwriterqueue.h readerwritercircularbuffer.h LICENSE.md
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME})
+# Complete the project
+aoe_project_complete()

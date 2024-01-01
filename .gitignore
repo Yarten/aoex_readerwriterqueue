@@ -23,4 +23,5 @@ test/
 benchmarks/benchmarks
 tests/stabtest/stabtest
 tests/unittests/unittests
-
+*build*
+.idea
